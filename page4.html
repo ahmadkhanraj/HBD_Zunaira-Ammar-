@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Message 💖</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .page {
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .message-container {
+            position: relative;
+        }
+
+        .message-box {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message-title {
+            color: #667eea;
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .message-content {
+            color: #333;
+            line-height: 1.8;
+            font-size: 1.1em;
+        }
+
+        .message-content p {
+            margin-bottom: 20px;
+        }
+
+        .signature {
+            margin-top: 30px;
+            font-style: italic;
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .from {
+            text-align: right;
+            font-size: 1.2em;
+            color: #764ba2;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .confetti {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .confetti-piece {
+            position: absolute;
+            font-size: 20px;
+            top: -30px;
+            opacity: 0;
+            animation: confettiFall 4s linear infinite;
+        }
+
+        @keyframes confettiFall {
+            0% {
+                top: -30px;
+                opacity: 0;
+                transform: rotate(0deg);
+            }
+            10% {
+                opacity: 1;
+            }
+            100% {
+                top: 100%;
+                opacity: 0.7;
+                transform: rotate(360deg);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .message-box {
+                padding: 30px 20px;
+            }
+
+            .message-title {
+                font-size: 1.8em;
+            }
+
+            .message-content {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page active" id="page4">
+        <div class="message-container">
+            <div class="message-box">
+                <h2 class="message-title">A Special Message for You</h2>
+                <div class="message-content">
+                    <p>Dear Zunaira Ammar,</p>
+                    <p>On this special occasion, I want to take a moment to tell you how truly grateful I am to have you in my life.</p>
+                    <p>You are not just my wife, but my best friend, my partner, and the love of my life. You bring so much joy, warmth, and meaning to every single day we share together.</p>
+                    <p>Your love, your kindness, and your beautiful spirit inspire me constantly. I am blessed beyond measure to walk through life with you by my side.</p>
+                    <p>May this year be filled with happiness, success, and beautiful moments that turn into cherished memories for us both.</p>
+                    <p class="signature">Wishing you the happiest of birthdays, my love!</p>
+                    <p class="from">— Ammar Farooq</p>
+                </div>
+            </div>
+            <div class="confetti" id="confettiContainer"></div>
+        </div>
+    </div>
+
+    <audio id="birthdayMusic" loop>
+        <source src="music3.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // Play music on load
+        const music = document.getElementById('birthdayMusic');
+        
+        // Try to autoplay (works on most browsers after user interaction)
+        window.addEventListener('load', () => {
+            music.play().catch(() => {
+                // If autoplay is blocked, play on first click
+                document.body.addEventListener('click', () => {
+                    music.play();
+                }, { once: true });
+            });
+        });
+
+        // Create heart confetti effect
+        const confettiContainer = document.getElementById('confettiContainer');
+        const colors = ['#ff6b9d', '#c44569', '#ff5e78', '#ff6348', '#ff4757', '#ee5a6f'];
+        
+        function createConfetti() {
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti-piece';
+                    confetti.textContent = '❤️';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.animationDelay = Math.random() * 3 + 's';
+                    confetti.style.animationDuration = (Math.random() * 4 + 3) + 's';
+                    confettiContainer.appendChild(confetti);
+                    
+                    setTimeout(() => {
+                        confetti.remove();
+                    }, 7000);
+                }, i * 150);
+            }
+        }
+
+        // Start confetti
+        createConfetti();
+        setInterval(createConfetti, 5000);
+    </script>
+</body>
+</html>

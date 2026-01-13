@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cut the Cake! 🎂</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Page 3: Cake Cutting -->
+    <div class="page active" id="page3">
+        <div class="cake-container">
+            <div class="cake">
+                <div class="cake-top"></div>
+                <div class="cake-middle"></div>
+                <div class="cake-bottom"></div>
+                <div class="candle">
+                    <div class="flame"></div>
+                </div>
+            </div>
+            <button class="cut-cake-btn" onclick="cutCake()">
+                <span>Cut The Cake 🎂</span>
+            </button>
+        </div>
+    </div>
+
+    <audio id="birthdayMusic" loop autoplay>
+        <source src="music2.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="page3.js"></script>
+</body>
+</html>
